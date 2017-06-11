@@ -1,0 +1,26 @@
+/*打印一号图形*/
+public class DiGuiYiHao{
+  public static void main(String[] args){    //主方法
+    int hangshu=Integer.parseInt(args[0]);
+    fangfa1(hangshu,1);
+    fangfa2(hangshu); 
+  }
+  public static void fangfa1(int hangshu,int i){   //方法1
+    for(int q=1;q<=i;q++){
+      System.out.print("*");
+    }                          //打印星号
+    System.out.println();
+    if(i==hangshu) return;
+    else fangfa1(hangshu,i+1);
+    
+  }
+  public static void fangfa2(int hangshu){    //方法2
+    if(hangshu==0) return;
+    else fangfa2(hangshu-1);
+    for(int w=1;w<=hangshu;w++){    //打印星号
+      System.out.print("*");
+    }
+    System.out.println();
+  }
+}
+ 
