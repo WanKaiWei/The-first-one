@@ -1,0 +1,40 @@
+/*直接选择排序*/
+public class ZhiJieXuanZe{
+  public static int shuzu[]={122,23,12,12,12,1,1,23,23};
+  public static void main(String[] args){
+    int maxshuwei=shuzu.length-1;
+    //排序前输出
+    System.out.println("排序前输出");
+    for(int i=0;i<=maxshuwei;i++){
+      System.out.print(" "+shuzu[i]+" ");
+    }
+    System.out.println();
+    //排序后输出
+    zhijiexuanze(maxshuwei);
+    System.out.println("排序后输出");
+    for(int i=0;i<=maxshuwei;i++){
+      System.out.print(" "+shuzu[i]+" ");
+    }
+    System.out.println();
+   }
+   public static void zhijiexuanze(int maxshuwei){
+     for(int j=0;j<=maxshuwei;j++){
+       int min=shuzu[j];
+       int minshuwei=j;
+       int temp=0;
+       for(int q=maxshuwei;q>j;q--){
+         if(shuzu[q]<min){
+           temp=shuzu[j];
+           min=shuzu[q];
+           shuzu[j]=min;
+           shuzu[q]=temp;
+         }
+       }
+       System.out.println("正在进行排序");
+       for(int w=0;w<=maxshuwei;w++){
+         System.out.print(" "+shuzu[w]+" ");
+       }
+       System.out.println();
+     }
+   }
+}
