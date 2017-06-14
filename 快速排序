@@ -1,0 +1,51 @@
+/*快速排序*/
+public class KuAiSuPaiXu{
+  public static int shuzu[]={23,4,31,34,23,56,786,56,45};
+  public static void main(String[] args){  //主方法
+    int maxshuwei=shuzu.length-1;
+    for(int i=0;i<=maxshuwei;i++){    //排序前输出
+      System.out.print(" "+shuzu[i]+" ");
+    }
+    System.out.println();    
+    kuaisupaixu(0,maxshuwei);
+    for(int i=0;i<=maxshuwei;i++){    //排序后输出
+      System.out.print(" "+shuzu[i]+" ");
+    }
+    System.out.println();
+  }
+  public static void kuaisupaixu(int left,int right){   //快速排序
+    int i=left,j=right;  //i左指针 j右指针
+    int pivot=shuzu[left];   //选最左边的数为基准数
+    int temp=0;
+    if(i<j){   //此条件满足就交换，否则方法结束返回
+      do{   //左右一直交替扫描，直到左右指针相遇
+        do{  //从右向左扫描
+          if(shuzu[j]<pivot){  //满足条件就交换并退出循环
+            temp=shuzu[i];
+            shuzu[i]=shuzu[j];
+            shuzu[j]=temp;
+            break;
+          }
+          else j--;   //否则指针一直向前移动，直到碰上i
+        }while(j>i);
+        do{   //从左向右扫描
+          if(shuzu[i]>pivot){   //满足条件就交换并退出循环temp=shuzu[i];  
+            temp=shuzu[i];           
+            shuzu[i]=shuzu[j];
+            shuzu[j]=temp;
+            break;
+          }
+          else i++;   //否则指针一直向后移动，直到碰上j
+        }while(i<j);
+      }while(i<j);  //左右一直交替扫描，直到左右指针相遇
+     //当i碰到j时，一趟扫描完成，j位置上的值已经找到最终位置
+     System.out.print("正在进行排序");   
+     for(int q=0;q<=shuzu.length-1;q++){    
+      System.out.print(" "+shuzu[q]+" ");
+     }
+     System.out.println();
+     if(j-1>left) kuaisupaixu(left,j-1);
+     if(right>j+1) kuaisupaixu(j+1,right);
+    }
+  }  
+}
