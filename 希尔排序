@@ -1,0 +1,40 @@
+/*希尔排序*/
+public class XiErPaiXu{
+  public static int shuzu[]={23,23,45,5,7,455,34,3,2};
+  public static void main(String[] args){   //主方法
+    int maxshuwei=shuzu.length-1;
+    System.out.println("排序前输出");
+    for(int i=0;i<=maxshuwei;i++){
+      System.out.print(" "+shuzu[i]+" ");
+    } 
+    System.out.println();
+    xierpaixu(maxshuwei);
+    System.out.println("排序后输出");
+    for(int i=0;i<=maxshuwei;i++){
+      System.out.print(" "+shuzu[i]+" ");
+    } 
+    System.out.println();
+  }
+  public static void xierpaixu(int maxshuwei){
+    int temp=0,p=0;
+    int d=(maxshuwei+1)/2;
+    while(d>=1){
+      for(int i=d;i<=maxshuwei;i++){
+        temp=shuzu[i];
+        p=i-d;
+        while(p>=0&&temp<shuzu[p]){
+          shuzu[p+d]=shuzu[p];
+          p-=d;
+        }
+        shuzu[p+d]=temp;
+      }
+      System.out.print("分组为"+d+"的排序结果：");
+      System.out.println("正在排序");
+      for(int q=0;q<=maxshuwei;q++){
+        System.out.print(" "+shuzu[q]+" ");
+      } 
+      System.out.println();
+      d/=2;
+    }
+  }
+}
