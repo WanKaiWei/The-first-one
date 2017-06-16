@@ -1,0 +1,45 @@
+/*合并排序*/
+public class VariableScope{
+  public static int shuzu1[]={12,23,34,55,76,86};
+  public static int shuzu2[]={23,34,65,76,87,90};
+  public static int shuzu[]=new int[12];
+  public static void main(String[] args){
+    int maxshuwei1=shuzu1.length-1;
+    int maxshuwei2=shuzu2.length-1;
+    int maxshuwei3=shuzu.length-1;
+    System.out.println("排序前输出");
+    for(int i=0;i<=maxshuwei1;i++){
+      System.out.print(" "+shuzu1[i]+" ");
+    }
+    System.out.println();
+    for(int w=0;w<=maxshuwei2;w++){
+      System.out.print(" "+shuzu2[w]+" ");
+    }
+    System.out.println();
+    hebingpaixu(maxshuwei1,maxshuwei2);
+    System.out.println("排序后输出");
+    for(int i=0;i<=maxshuwei3;i++){
+      System.out.print(" "+shuzu[i]+" ");
+    }
+    System.out.println();  
+  }
+  public static void hebingpaixu(int maxshuwei1,int maxshuwei2){
+    int i1=0,i2=0,k=0;
+    while(i1<=5&&i2<=5){
+      if(shuzu1[i1]<shuzu2[i2]){
+        shuzu[k]=shuzu1[i1];
+        i1++;
+      }else{
+        shuzu[k]=shuzu2[i2];
+        i2++;
+      }
+      k++;
+    }
+    if(i1<=5){
+    for(int e=i1;e<=5;e++) shuzu[k+e-i1]=shuzu1[e];
+    }
+    if(i2<=5){
+    for(int r=i2;r<=5;r++) shuzu[k+r-i2]=shuzu2[r];
+    }
+  }
+}
