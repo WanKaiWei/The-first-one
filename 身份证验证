@@ -1,0 +1,93 @@
+/*身份证验证程序*/
+public class CheckIDcard{
+  public static void main(String aa[]){
+    int temp=0,year=0,month=0,day=0;
+    boolean flag=true;
+    String shenfenzheng=aa[0];
+    if(shenfenzheng.length()!=18){
+      System.out.println("身份证的位数不正确");
+      System.exit(0);
+    }
+    String sheng=shenfenzheng.substring(0,2);
+    try{
+      temp=Integer.parseInt(sheng);
+    }catch(Exception e){
+      System.out.println("身份证上的省编码错误");
+      flag=false;
+    }
+    String shi=shenfenzheng.substring(2,4);
+    if(shi.charAt(0)>57||shi.charAt(0)<48||shi.charAt(1)>57||shi.charAt(1)<48){
+      System.out.println("身份证上的市编码错误");
+      flag=false;
+    }
+    String xian=shenfenzheng.substring(4,6);
+    try{
+      temp=Integer.parseInt(xian); 
+    }catch(Exception e){
+      System.out.println("身份证上的县编码错误");
+      flag=false;
+    }
+    String yearStr=shenfenzheng.substring(6,10);
+    try{
+      year=Integer.parseInt(yearStr);
+      if(year<1900||year>2009){
+        System.out.println("身份证上的年份范围错误");
+        flag=false;
+      }
+    }catch(Exception e){
+      System.out.println("身份证上的年份格式错误");
+      flag=false;
+    }
+    String monthStr=shenfenzheng.substring(10,12);
+    try{
+      month=Integer.parseInt(monthStr);
+      if(month<1||month>12){
+        System.out.println("身份证上的月份范围错误");
+        flag=false;
+      }
+    }catch(Exception e){
+      System.out.println("身份证上的月份格式错误");
+      flag=false;
+    }
+    String dayStr=shenfenzheng.substring(12,14);
+    try{
+      day=Integer.parseInt(dayStr);
+      if(day<1||day>31){
+        System.out.println("身份证上的日期范围错误");
+        flag=false;
+      }
+      switch(month){
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+          if(day>30){
+            System.out.println("身份证上的日期范围错误");
+            flag=false;
+          }
+          break;
+        case 2:
+          if(year%100==0||(year%4==0&&year%100!=0)){
+            if(day>28){
+            System.out.println("身份证上的日期范围错误");
+            flag=false;
+            }
+            }else if(day>29){
+              System.out.println("身份证上的日期范围错误");
+              flag=false;
+            }
+          }
+    }catch(Exception e){
+      System.out.println("身份证上的日期格式错误");
+      flag=false;
+    }
+    String last3=shenfenzheng.substring(14,17);
+    try{
+      temp=Integer.parseInt(last3);
+    }catch(Exception e){
+      System.out.println("身份证上的后面3位流水号错误");
+      flag=false;
+    }
+    if(flag) System.out.println("身份证号基本正确");
+  }
+}
