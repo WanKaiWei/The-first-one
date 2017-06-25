@@ -1,0 +1,21 @@
+/*邮箱地址验证*/
+public class CheckEmail{
+  public static void main(String aa[]){
+    String email=aa[0];
+    int at=email.indexOf('@');
+    boolean flag=true;
+    if(at<0||at==email.length()-1){
+      System.out.println("邮箱的地址格式错误");
+      flag=false;
+    }
+    String name=email.substring(at);
+    int dot=name.indexOf('.');
+    if(dot<=0||dot==name.length()-1){
+      System.out.println("邮箱的服务器地址错误");
+      flag=false;
+    }
+    if(flag) System.out.println("邮箱的格式基本正确");
+  }
+}
+   
+      
