@@ -1,0 +1,41 @@
+/*按规则产生字符串，格式为ICK00000*/
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+public class CteateICK{
+  public static void main(String aa[]){
+    InputStreamReader ir=new InputStreamReader(System.in);
+    BufferedReader br=new BufferedReader(ir);
+    String originStr="";
+    System.out.println("请输入字符串（格式为ICK00000）");
+    try{
+      originStr=br.readLine();  //从键盘读入一个字符串
+    }catch(Exception e){}
+      System.out.println(createICKStr(originStr));
+  }
+  public static String createICKStr(String originStr){
+    String preStr=originStr.substring(0,3);
+    int n=Integer.parseInt(originStr.substring(3));  //取出后五位数字
+    String nStr=String.valueOf(n);  //将int型转换成String
+    String resultStr="";
+    switch(nStr.length()){
+      case(1):
+        resultStr=preStr+"0000"+(n+1);
+        break;
+      case(2):
+        resultStr=preStr+"000"+(n+1);
+        break;
+      case(3):
+        resultStr=preStr+"00"+(n+1);
+        break;
+      case(4):
+        resultStr=preStr+"0"+(n+1);
+        break;
+      case(5):
+        resultStr=preStr+(n+1);
+        break;
+    }
+    return resultStr;
+  }
+}
+  
+  
