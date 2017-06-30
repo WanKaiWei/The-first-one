@@ -1,0 +1,34 @@
+/*高精度计算,运行时
+需要输入两个参与运算的字符串*/
+public class HighPrecision{
+  public static void main(String aa[]){  //主方法
+    String addStr1=aa[0];
+    String addStr2=aa[1];
+    int maxIndex=0;
+    //获取两个字符串中最大长度
+    int maxLen=(addStr1.length()>addStr2.length())?addStr1.length():addStr2.length();
+    //定义三个数组
+    int addArray1[]=new int[maxLen];  //放第一个字符串
+    int addArray2[]=new int[maxLen];  //放第二个字符串
+    int sumArray[]=new int[maxLen+1];  //结果
+    //拆分第一个字符串
+    for(int arrayIndex=0,strIndex=addStr1.length()-1;strIndex>=0;arrayIndex++,strIndex--){
+      addArray1[arrayIndex]=addStr1.charAt(strIndex)-48;
+    }
+    //拆分第二个字符串
+    for(int arrayIndex=0,strIndex=addStr2.length()-1;strIndex>=0;arrayIndex++,strIndex--){
+      addArray2[arrayIndex]=addStr2.charAt(strIndex)-48;
+    }
+    //进行加运算
+    for(int i=1;i<maxLen;i++){
+      sumArray[i]=addArray1[i]+addArray2[i]+sumArray[i];
+      sumArray[i+1]=sumArray[i]/10;
+      sumArray[i]%=10;
+    }
+    //判断有没有进位
+    if(sumArray[maxLen]==0) maxIndex=maxLen-1;
+    else maxIndex=maxLen;
+    //倒序输出
+    for(int i=maxIndex;i>=0;i--) System.out.print(sumArray[i]);
+  }
+}
